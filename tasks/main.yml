@@ -1,0 +1,25 @@
+- name: Install mutt
+  tags: mutt
+  ansible.builtin.package:
+    name: mutt
+    state: present
+
+- name: Create Maildir directory
+  ansible.builtin.file:
+    path: /home/{{ mutt_user }}/mail
+    state: directory
+    owner: "{{ mutt_user }}"
+    group: "{{ mutt_user }}"
+    mode: '0770'
+
+- name: Create mail forward file
+  ansible.builtin.template:
+    src: forward
+    dest: /home/{{ mutt_user}}/.forward
+    mode: '0644'
+
+- name: Copy mutt configuration
+  ansible.builtin.template:
+    src: muttrc
+    dest: /home/{{ mutt_user}}/.muttrc
+    mode: '0644'

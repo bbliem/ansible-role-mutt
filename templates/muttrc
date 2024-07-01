@@ -1,0 +1,10 @@
+set mbox_type = Maildir
+set folder = "~/mail"
+set mask = "!^\\.[^.]"
+set spoolfile = "~/mail"
+set mbox = "~/mail"
+set record = "+sent"
+set postponed = "+drafts"
+set from = "{{ mutt_from }}"
+set use_envelope_from = yes
+#set realname = "eisber"
